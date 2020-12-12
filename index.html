@@ -16,10 +16,20 @@
     <h1>Arretina</h1>
     <input id="file-input" type="file" accept="application/json" onchange="readFile(this)">
 
+    <fieldset>
+      <legend>Default Overrides:</legend>
+      <sac-default-color-picker data-defaultcolor="#808080"></sac-default-color-picker>
+      <sac-default-margin-input data-defaultmargin="2"></sac-default-margin-input>
+      <sac-default-padding-input data-defaultpadding="2"></sac-default-padding-input>
+    </fieldset>
+
     <sac-parity-option data-parity="odd" data-defaultcolor="#000000"></sac-parity-option>
     <sac-parity-option data-parity="even" data-defaultcolor="#FF0000"></sac-parity-option>
 
-    <sac-comparison-option data-id="1"></sac-comparison-option>
+    <sac-comparison-option data-id="1" data-defaultvalue="0" data-defaultcolor="#000000">
+    </sac-comparison-option>
+
+    <sac-hide-value-option></sac-hide-value-option>
 
     <div id="array-root"></div>
 
@@ -29,10 +39,17 @@
 
     <script src="code.js" type="text/javascript"></script>
 
+    <!-- Components -->
+    <!-- Custom Elements -->
     <script src="components/array.js" type="text/javascript"></script>
     <script src="components/scalar.js" type="text/javascript"></script>
-    <script src="components/parityOption.js" type="text/javascript"></script>
-    <script src="components/comparisonOption.js" type="text/javascript"></script>
-
+    <!-- Default Overrides -->
+    <script src="components/defaults/defaultColorPicker.js" type="text/javascript"></script>
+    <script src="components/defaults/defaultMarginInput.js" type="text/javascript"></script>
+    <script src="components/defaults/defaultPaddingInput.js" type="text/javascript"></script>
+    <!-- Visualization Options -->
+    <script src="components/options/parityOption.js" type="text/javascript"></script>
+    <script src="components/options/comparisonOption.js" type="text/javascript"></script>
+    <script src="components/options/hideValueOption.js" type="text/javascript"></script>
   </body>
 </html>

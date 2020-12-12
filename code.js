@@ -1,23 +1,6 @@
 "use strict";
 
-const styles = [
-  // (e, v) => {
-  //   const form = document.getElementById('odd').shadowRoot;
-  //   const checkbox = form.querySelector(`input[type=checkbox]`);
-  //   if (checkbox.checked && v % 2 !== 0) {
-  //     const colorPicker = form.querySelector(`input[type=color]`);
-  //     e.setAttribute('style', `background:${colorPicker.value}`)
-  //   }
-  // },
-  // (e, v) => {
-  //   const form = document.getElementById('even');
-  //   const checkbox = form.querySelector(`input[type=checkbox]`);
-  //   if (checkbox.checked && v % 2 === 0) {
-  //     const colorPicker = form.querySelector(`input[type=color]`);
-  //     e.setAttribute('style', `background:${colorPicker.value}`)
-  //   }
-  // },
-];
+const styles = [];
 
 function getFragment(type) {
   const customElement = document.getElementById('sac-' + type);
@@ -28,6 +11,7 @@ function loadScalar(fragment, id, value, before = null) {
   const instance = document.importNode(fragment.content, true);
   const valueContainer = instance.querySelector('.value');
 
+  // valueContainer.setAttribute('data-value', value);
   valueContainer.innerHTML = value;
   styles.forEach( f => {
     f(valueContainer, value);

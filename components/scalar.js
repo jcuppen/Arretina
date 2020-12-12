@@ -12,7 +12,6 @@
       // create a span that will later contain the scalar value.
       const span = document.createElement('span');
       span.setAttribute('class', 'value');
-
       // create the template that will be used to populate
       // arrays and add the span.
       const template = document.createElement('template');

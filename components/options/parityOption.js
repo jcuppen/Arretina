@@ -6,11 +6,6 @@ class ParityOption extends HTMLElement {
 
     const parity = this.dataset.parity;
 
-    // function gt = x => {v => v > x};
-    // function ge = x => {v => v >= x};
-    // function lt = x => {v => v < x};
-    // function le = x => {v => v <= x};
-
     const f = (parity, element, value) => {
       const pred = (parity == 'even') ? v => v % 2 === 0 : v => v % 2 !== 0;
 
@@ -51,7 +46,7 @@ class ParityOption extends HTMLElement {
       ${colorPicker.outerHTML}
     `;
 
-    // generate the shadown DOM and add the template element.
+    // generate the shadown DOM and add the container element.
     const shadow = this.attachShadow({mode: 'open'});
     shadow.appendChild(container);
   }
