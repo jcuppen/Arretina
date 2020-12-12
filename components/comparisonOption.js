@@ -11,6 +11,8 @@ class ComparisonOption extends HTMLElement {
       {name: "greater", symbol: ">", fun: (x, v) => v > x},
       {name: "lesser-equal", symbol: "&le;", fun: (x, v) => v <= x},
       {name: "lesser", symbol: "<", fun: (x, v) => v < x},
+      {name: "equal", symbol: "=", fun: (x, v) => v === x},
+      {name: "not-equal", symbol: "&ne;", fun: (x, v) => v !== x},
     ];
 
     // function gt = (x, v) => {v => v > x};
@@ -61,22 +63,22 @@ class ComparisonOption extends HTMLElement {
 
     this.setAttribute('id', this.dataset.id);
 
-    let exp = `
-    <div>
-      <input type="checkbox" id="comp1">
-      All numbers
-      <select id="c">
-        <option value="greater">></option>
-        <option value="greater-equal">&ge;</option>
-        <option value="lesser"><</option>
-        <option value="lesser-equal">&le;</option>
-      </select>
-      than
-      <input type="number">
-      will be colored:
-      <input type="color">
-    </div>
-    `
+    // let exp = `
+    // <div>
+    //   <input type="checkbox" id="comp1">
+    //   All numbers
+    //   <select id="c">
+    //     <option value="greater">></option>
+    //     <option value="greater-equal">&ge;</option>
+    //     <option value="lesser"><</option>
+    //     <option value="lesser-equal">&le;</option>
+    //   </select>
+    //   than
+    //   <input type="number">
+    //   will be colored:
+    //   <input type="color">
+    // </div>
+    // `
 
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
@@ -93,6 +95,7 @@ class ComparisonOption extends HTMLElement {
 
     const numberInput = document.createElement('input');
     numberInput.setAttribute('type', 'number');
+    numberInput.setAttribute('value', 0);
 
     const colorPicker = document.createElement('input');
     colorPicker.setAttribute('type', 'color');
