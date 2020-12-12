@@ -1,0 +1,41 @@
+// even
+[
+  {
+  "condition": "isEven",
+  "class": "even",
+  "style": {
+    "background-color": "red",
+    "color": "white",
+    "margin": "2px",
+    "padding": "2px",
+    "border-radius": "5px",
+  }
+},
+{
+  "condition": "isOdd",
+  "class": "odd",
+  "style": {
+    "background-color": "black",
+    "color": "white",
+    "margin": "2px",
+    "padding": "2px",
+    "border-radius": "5px",
+  }
+}
+
+/*span.value:nth-child(2n) {
+  background-color: red;
+  color: white;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+span.value:nth-child(2n+1) {
+  background-color: black;
+  color: white;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 5px;
+}
+*/

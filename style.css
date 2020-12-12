@@ -1,0 +1,31 @@
+#file-input {
+  width: 100%;
+}
+
+#array-root {
+  margin-top: 15px;
+}
+
+.value {
+  background-color: grey;
+  color: white;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.array-row {
+  overflow-x: auto;
+  padding: 5px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.value {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
