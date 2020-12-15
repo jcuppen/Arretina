@@ -6,26 +6,23 @@ class ComparisonOption extends HTMLElement {
 
     const comparators = [
       {name: "greater-equal", symbol: "&ge;", fun: (x, v) => v >= x},
-      {name: "greater", symbol: ">", fun: (x, v) => v > x},
-      {name: "lesser-equal", symbol: "&le;", fun: (x, v) => v <= x},
-      {name: "lesser", symbol: "<", fun: (x, v) => v < x},
-      {name: "equal", symbol: "=", fun: (x, v) => v === x},
-      {name: "not-equal", symbol: "&ne;", fun: (x, v) => v !== x},
+      {name: "greater",       symbol: ">",    fun: (x, v) => v > x},
+      {name: "lesser-equal",  symbol: "&le;", fun: (x, v) => v <= x},
+      {name: "lesser",        symbol: "<",    fun: (x, v) => v < x},
+      {name: "equal",         symbol: "=",    fun: (x, v) => v === x},
+      {name: "not-equal",     symbol: "&ne;", fun: (x, v) => v !== x},
     ];
 
     const f = (id, functions, element, value) => {
       const form = document.getElementById(id).shadowRoot;
-      const checkbox = form.querySelector(`input[type=checkbox]`);
+      const checkbox = form.querySelector('input[type=checkbox]');
       if (checkbox.checked) {
-        const selected = form.querySelector(`select`).value;
-        const f = functions[`${selected}`];
-
+        const selected = form.querySelector('select').value;
         const number = form.querySelector('input[type=number]').value;
 
-        console.log(f.call(this, number, value));
-        if(f.call(this, number, value)) {
-          const colorPicker = form.querySelector(`input[type=color]`);
-          element.setAttribute('style', `background:${colorPicker.value}`);
+        if(functions[selected].call(this, number, value)) {
+          const color = form.querySelector('input[type=color]').value;
+          element.style.background = color;
         }
       }
     };
@@ -53,11 +50,11 @@ class ComparisonOption extends HTMLElement {
 
     const numberInput = document.createElement('input');
     numberInput.setAttribute('type', 'number');
-    numberInput.setAttribute('value', `${this.dataset.defaultvalue}`);
+    numberInput.setAttribute('value', this.dataset.value);
 
     const colorPicker = document.createElement('input');
     colorPicker.setAttribute('type', 'color');
-    colorPicker.setAttribute('value', `${this.dataset.defaultcolor}`);
+    colorPicker.setAttribute('value', this.dataset.color);
 
     const container = document.createElement('div');
     container.setAttribute('id', this.dataset.id);

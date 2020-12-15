@@ -11,3 +11,18 @@ var uniqueID = (function() {
   var id = 0;
   return function() { return id++; };  // Return and increment
 })();
+
+function generateSelect(id, options, selectedValue) {
+  const select = document.createElement('select');
+  select.setAttribute('id', id);
+  options.forEach( o => {
+    const option = document.createElement('option');
+    option.setAttribute('value', o);
+    if (selectedValue == o) {
+      option.setAttribute('selected', true);
+    }
+    option.innerHTML = o;
+    select.appendChild(option);
+  });
+  return select;
+}

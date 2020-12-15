@@ -1,9 +1,0 @@
-{
-  "type": "scalar",
-  "value": [
-    {"type": "scalar", "value": 1},
-    {"type": "scalar", "value": 2},
-    {"type": "scalar", "value": 3},
-    {"type": "scalar", "value": 4}
-  ]
-}

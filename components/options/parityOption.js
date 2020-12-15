@@ -8,12 +8,11 @@ class ParityOption extends HTMLElement {
 
     const f = (parity, element, value) => {
       const pred = (parity == 'even') ? v => v % 2 === 0 : v => v % 2 !== 0;
-
       const form = document.getElementById(parity).shadowRoot;
       const checkbox = form.querySelector(`input[type=checkbox]`);
       if (checkbox.checked && pred(value)) {
         const colorPicker = form.querySelector(`input[type=color]`);
-        element.setAttribute('style', `background:${colorPicker.value}`);
+        element.style.background = colorPicker.value;
       }
     };
 
@@ -36,7 +35,7 @@ class ParityOption extends HTMLElement {
 
     const colorPicker = document.createElement('input');
     colorPicker.setAttribute('type', 'color');
-    colorPicker.setAttribute('value', `${this.dataset.defaultcolor}`);
+    colorPicker.setAttribute('value', this.dataset.defaultcolor);
 
     const container = document.createElement('div');
     container.setAttribute('id', parity);
