@@ -22,13 +22,12 @@ class ComparisonOption extends HTMLElement {
         const number = form.querySelector('input[type=number]').value;
 
         if(functions[selected].call(this, number, value)) {
-          const color = form.querySelector('input[type=color]').value;
-          element.style.backgroundColor = color;
+          const backgroundColor = form.querySelector('input[type=color]').value;
 
           //TODO: color text based on background color.
-          // double luma = ((0.299 * iColor.R) + (0.587 * iColor.G) + (0.114 * iColor.B)) / 255;
 
-          element.style.backgroundColor = form.querySelector('input[type=color]').value;
+          element.style.backgroundColor = backgroundColor;
+          element.style.color = determineForegroundColor(backgroundColor);
         }
       }
     };

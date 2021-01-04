@@ -29,6 +29,15 @@ function importScript(path) {
   importedScripts.push(path);
 }
 
+// Inspired by: https://codepen.io/WebSeed/pen/pvgqEq
+function determineForegroundColor(backgroundColor) {
+  let r = parseInt(backgroundColor.slice(1,3),16);
+  let g = parseInt(backgroundColor.slice(3,5),16);
+  let b = parseInt(backgroundColor.slice(5,7),16);
+  var perceptiveLuminance = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return (perceptiveLuminance < 0.5) ? '#000000' : '#FFFFFF';
+}
+
 function generateColorPicker(defaultColor) {
     const colorPicker = document.createElement('input');
     colorPicker.setAttribute('type', 'color');

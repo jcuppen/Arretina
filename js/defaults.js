@@ -20,7 +20,7 @@ const defaultStyles = [
   {type: INPUT_TYPES.length,  data: {prop: "margin",        unit: 'px', value: 2}},
   {type: INPUT_TYPES.length,  data: {prop: "padding",       unit: 'px', value: 5}},
   {type: INPUT_TYPES.length,  data: {prop: "border-radius", unit: 'px', value: 5}},
-  {type: INPUT_TYPES.color,   data: {prop: "color",      value: '#FFFFFF'}},
+  // {type: INPUT_TYPES.color,   data: {prop: "color",      value: '#FFFFFF'}},
   {type: INPUT_TYPES.color,   data: {prop: "background", value: '#808080'}},
 ];
 

@@ -15,6 +15,9 @@ class ColorInput extends HTMLElement {
       const form = document.getElementById(this.dataset.id).shadowRoot;
       const selectedProperty = form.querySelector('select').value;
       const colorPicker = form.querySelector(`input[type=color]`);
+      if (selectedProperty == 'background-color') {
+        element.style.color = determineForegroundColor(colorPicker.value);
+      }
       element.style[selectedProperty] = colorPicker.value;
     };
 
