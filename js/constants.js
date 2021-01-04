@@ -5,6 +5,11 @@ const ELEMENT_TYPES = {
   array: 'array'
 };
 
+const INPUT_TYPES = {
+  length: 'length',
+  color: 'color',
+};
+
 const OPTION_TYPES = {
   parity: 'parity',
   comparison: 'comparison',

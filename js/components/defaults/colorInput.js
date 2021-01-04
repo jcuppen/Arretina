@@ -3,7 +3,9 @@
 class ColorInput extends HTMLElement {
   constructor() {
     super();
+  }
 
+  connectedCallback() {
     const properties = [
       'background-color',
       'color',

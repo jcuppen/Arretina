@@ -3,7 +3,9 @@
 class LengthInput extends HTMLElement {
   constructor() {
     super();
+  }
 
+  connectedCallback() {
     const properties = [
       'border-radius',
       'border-width',

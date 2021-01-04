@@ -1,23 +1,23 @@
 "use strict";
 
-class OptionPicker extends HTMLElement {
+class DefaultsPicker extends HTMLElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
-    const optionTypes = Object.values(OPTION_TYPES);
+    const inputTypes = Object.values(INPUT_TYPES);
 
     this.id = this.dataset.id;
 
-    const optionTypeSelect = generateSelect(optionTypes, optionTypes[0]);
+    const inputTypeSelect = generateSelect(inputTypes, inputTypes[0]);
     const addButton = document.createElement('button');
     addButton.id = 'add-button';
     addButton.innerHTML = `add`;
 
     const container = document.createElement('div');
     container.innerHTML = `
-      ${optionTypeSelect.outerHTML}
+      ${inputTypeSelect.outerHTML}
       ${addButton.outerHTML}
     `;
     // generate the shadown DOM and add the container element
@@ -26,9 +26,9 @@ class OptionPicker extends HTMLElement {
 
     // add event listeners
     shadow.getElementById('add-button').onclick = e => {
-      addOption({type: shadow.querySelector('select').value});
+      addDefault({type: shadow.querySelector('select').value});
     };
   }
 }
 
-customElements.define(`sac-option-picker`, OptionPicker);
+customElements.define(`sac-defaults-picker`, DefaultsPicker);
