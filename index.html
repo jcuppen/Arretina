@@ -12,20 +12,19 @@
   </head>
   <body>
     <h1>Arretina <i>(name subject to change)</i></h1>
-    <input id="file-input" type="file" accept="application/json" onchange="readFile(this)">
-    <hr>
-    <sac-defaults-picker data-id="picker"></sac-defaults-picker>
 
-    <fieldset>
-      <legend id="default-styles">Defaults:</legend>
-    </fieldset>
+    <sac-defaults-picker data-id="picker"></sac-defaults-picker>
+    <fieldset><legend id="default-styles">Defaults:</legend></fieldset>
+
+    <hr>
 
     <sac-option-picker data-id="picker"></sac-option-picker>
-
     <fieldset id="testt">
       <legend id="visualization-options">Visualization Options:</legend>
     </fieldset>
 
+    <hr>
+    <input id="file-input" type="file" accept="application/json" onchange="readFile(this)">
     <div id="array-root"></div>
 
     <!-- JavaScript goes here -->

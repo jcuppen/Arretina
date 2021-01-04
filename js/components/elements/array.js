@@ -5,27 +5,28 @@
   class Array extends HTMLElement {
     constructor() {
       super();
+    }
 
-      const orientation = this.dataset.orientation;
-      if (!['row', 'col'].includes(orientation)) {
-        console.error(`Unexpected orientation given: "${orientation}"`);
+    connectedCallback() {
+      if (!['row', 'col'].includes(this.dataset.orientation)) {
+        console.error(`Unexpected orientation given: "${this.dataset.orientation}"`);
         return;
       }
 
       // set id of 'root' to allow template to be found.
-      this.setAttribute('id', `sac-${NAME}-${orientation}`);
+      this.id = `sac-${NAME}-${this.dataset.orientation}`;
 
       const span = document.createElement('span');
-      span.classList.add(`array-anchor`);
+      span.classList.add(`${NAME}-anchor`);
 
       const div = document.createElement('div');
-      div.classList.add(`array`);
-      div.classList.add(`array-${orientation}`);
+      div.classList.add(`${NAME}`);
+      div.classList.add(`${NAME}-${this.dataset.orientation}`);
       div.appendChild(span);
 
       // create the template that will be used to populate arrays and add the span.
       const template = document.createElement('template');
-      template.setAttribute('id', `${NAME}-${orientation}-template`);
+      template.id = `${NAME}-${this.dataset.orientation}-template`;
       template.innerHTML = `
         ${div.outerHTML}
       `;
