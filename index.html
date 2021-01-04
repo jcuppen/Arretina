@@ -1,14 +1,14 @@
 <sac-scalar></sac-scalar>
-<!-- <sac-array data-orientation='row'></sac-array> -->
 <sac-array data-orientation='col'></sac-array>
 <sac-array data-orientation='row'></sac-array>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Arretina</title>
+    <title>Arretina (name subject to change)</title>
+    <link rel="icon" href="img/favicon/favicon.ico">
     <!-- Stylesheets go here -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <h1>Arretina <i>(name subject to change)</i></h1>
@@ -18,33 +18,27 @@
       <legend id="default-styles">Defaults:</legend>
     </fieldset>
 
-    <sac-parity-option data-parity="odd" data-defaultcolor="#000000"></sac-parity-option>
-    <sac-parity-option data-parity="even" data-defaultcolor="#FF0000"></sac-parity-option>
+    <sac-option-picker data-id="picker"></sac-option-picker>
 
-    <sac-comparison-option data-id="dddddd" data-value="0" data-color="#000000">
-    </sac-comparison-option>
-
-    <sac-hide-value-option></sac-hide-value-option>
+    <fieldset id="testt">
+      <legend id="visualization-options">Visualization Options:</legend>
+    </fieldset>
 
     <div id="array-root"></div>
 
     <!-- JavaScript goes here -->
-    <script src="globals.js" type="text/javascript"></script>
-    <script src="constants.js" type="text/javascript"></script>
+    <!-- Required js will be loaded here dynamically -->
+    <div id="script-anchor"></div>
 
-    <script src="defaults.js" type="text/javascript"></script>
-    <script src="code.js" type="text/javascript"></script>
+    <script src="js/globals.js" type="text/javascript"></script>
+    <script src="js/constants.js" type="text/javascript"></script>
+    <script src="js/code.js" type="text/javascript"></script>
+    <script src="js/defaults.js" type="text/javascript"></script>
+    <script src="js/options.js" type="text/javascript"></script>
 
+    <script src="js/components/optionPicker.js" type="text/javascript"></script>
     <!-- Components -->
-    <!-- Custom Elements -->
-    <script src="components/array.js" type="text/javascript"></script>
-    <script src="components/scalar.js" type="text/javascript"></script>
-    <!-- Default Overrides -->
-    <script src="components/defaults/colorInput.js" type="text/javascript"></script>
-    <script src="components/defaults/lengthInput.js" type="text/javascript"></script>
-    <!-- Visualization Options -->
-    <script src="components/options/parityOption.js" type="text/javascript"></script>
-    <script src="components/options/comparisonOption.js" type="text/javascript"></script>
-    <script src="components/options/hideValueOption.js" type="text/javascript"></script>
+    <script src="js/components/elements/array.js" type="text/javascript"></script>
+    <script src="js/components/elements/scalar.js" type="text/javascript"></script>
   </body>
 </html>

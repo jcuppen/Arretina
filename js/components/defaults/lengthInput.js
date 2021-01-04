@@ -49,20 +49,15 @@ class LengthInput extends HTMLElement {
       element.style[selectedProperty] = `${inputNumber}${selectedUnit}`;
     };
 
-    styles.push(f.bind(this));
+    styles.push(f);
 
-    this.setAttribute('id', this.dataset.id);
+    this.id = this.dataset.id;
 
-    const propSelect = generateSelect('prop-select', properties, this.dataset.prop);
-
-    const numberInput = document.createElement('input');
-    numberInput.setAttribute('type', 'number');
-    numberInput.setAttribute('value', this.dataset.value);
-
-    const unitSelect = generateSelect('unit-select', units, this.dataset.unit);
+    const propSelect = generateSelect(properties, this.dataset.prop, 'prop-select');
+    const numberInput = generateNumberInput(this.dataset.value);
+    const unitSelect = generateSelect(units, this.dataset.unit, 'unit-select');
 
     const container = document.createElement('div');
-    // container.setAttribute('id', 'default-value');
     container.innerHTML = `
       Set ${propSelect.outerHTML} to ${numberInput.outerHTML}${unitSelect.outerHTML}
     `;

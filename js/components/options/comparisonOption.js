@@ -3,7 +3,9 @@
 class ComparisonOption extends HTMLElement {
   constructor() {
     super();
+  }
 
+  connectedCallback() {
     const comparators = [
       {name: "greater-equal", symbol: "&ge;", fun: (x, v) => v >= x},
       {name: "greater",       symbol: ">",    fun: (x, v) => v > x},
@@ -13,16 +15,20 @@ class ComparisonOption extends HTMLElement {
       {name: "not-equal",     symbol: "&ne;", fun: (x, v) => v !== x},
     ];
 
-    const f = (id, functions, element, value) => {
-      const form = document.getElementById(id).shadowRoot;
-      const checkbox = form.querySelector('input[type=checkbox]');
-      if (checkbox.checked) {
+    const f = (functions, element, value) => {
+      const form = document.getElementById(this.dataset.id).shadowRoot;
+      if (form.querySelector('input[type=checkbox]').checked) {
         const selected = form.querySelector('select').value;
         const number = form.querySelector('input[type=number]').value;
 
         if(functions[selected].call(this, number, value)) {
           const color = form.querySelector('input[type=color]').value;
-          element.style.background = color;
+          element.style.backgroundColor = color;
+
+          //TODO: color text based on background color.
+          // double luma = ((0.299 * iColor.R) + (0.587 * iColor.G) + (0.114 * iColor.B)) / 255;
+
+          element.style.backgroundColor = form.querySelector('input[type=color]').value;
         }
       }
     };
@@ -33,12 +39,11 @@ class ComparisonOption extends HTMLElement {
     };
     const functions = comparators.reduce( reducer, {});
 
-    styles.push(f.bind(this, this.dataset.id, functions));
+    styles.push(f.bind(this, functions));
 
     this.setAttribute('id', this.dataset.id);
 
-    const checkbox = document.createElement('input');
-    checkbox.setAttribute('type', 'checkbox');
+    const checkbox = generateCheckbox();
 
     const select = document.createElement('select');
     comparators.forEach( c => {
@@ -48,13 +53,8 @@ class ComparisonOption extends HTMLElement {
       select.appendChild(option);
     });
 
-    const numberInput = document.createElement('input');
-    numberInput.setAttribute('type', 'number');
-    numberInput.setAttribute('value', this.dataset.value);
-
-    const colorPicker = document.createElement('input');
-    colorPicker.setAttribute('type', 'color');
-    colorPicker.setAttribute('value', this.dataset.color);
+    const numberInput = generateNumberInput(this.dataset.value ?? 0);
+    const colorPicker = generateColorPicker(this.dataset.color);
 
     const container = document.createElement('div');
     container.setAttribute('id', this.dataset.id);

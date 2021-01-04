@@ -2,6 +2,13 @@ body {
   font-family: Sans-Serif;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #333333;
+    color: white;
+  }
+}
+
 #file-input {
   width: 100%;
 }
@@ -18,17 +25,14 @@ body {
 .array {
   display: flex;
   overflow-x: auto;
-  padding: 5px;
 }
 .array-row {
   flex-direction: row;
-  /*background-color: rgba(255,0,0,0.5);*/
   justify-content: space-between;
   max-height: fit-content;
 }
 .array-col {
   flex-direction: column;
-  /*background-color: rgba(0,0,255,0.5);*/
   max-width: fit-content;
 }
 

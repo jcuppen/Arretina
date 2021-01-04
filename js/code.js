@@ -5,7 +5,6 @@ const styles = [];
 function getFragment(type, orientation = '') {
   const suffix = (orientation !== '') ? `${type}-${orientation}` : type;
   const customElement = document.getElementById(`sac-${suffix}`);
-  console.log(customElement);
   const prefix = (orientation !== '') ? `${type}-${orientation}` : type;
   return customElement.shadowRoot.getElementById(`${prefix}-template`);
 }
@@ -29,11 +28,6 @@ function loadScalar(fragment, id, value, before = null) {
 }
 
 function loadArray(fragment, hookId, arrayContents, orientation='row') {
-// console.log(fragment);
-// console.log(hookId);
-// console.log(arrayContents);
-// console.log(instance.lastElementChild);
-
   const uuid = uniqueID();
   const instance = document.importNode(fragment.content, true);
 
@@ -68,3 +62,4 @@ function readFile(inputElement) {
     reader.readAsText(inputElement.files[0]);
   }
 }
+

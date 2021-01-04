@@ -7,20 +7,21 @@
       super();
 
       const orientation = this.dataset.orientation;
-
-      // set id of 'root' to allow template to be found.
-      this.setAttribute('id', `sac-${NAME}-${orientation}`);
-
-      const div = document.createElement('div');
-      if (['row', 'col'].includes(orientation)) {
-        div.classList.add(`array`);
-        div.classList.add(`array-${orientation}`);
-      } else {
+      if (!['row', 'col'].includes(orientation)) {
         console.error(`Unexpected orientation given: "${orientation}"`);
         return;
       }
 
-      div.innerHTML = `<span class=array-anchor></span>`;
+      // set id of 'root' to allow template to be found.
+      this.setAttribute('id', `sac-${NAME}-${orientation}`);
+
+      const span = document.createElement('span');
+      span.classList.add(`array-anchor`);
+
+      const div = document.createElement('div');
+      div.classList.add(`array`);
+      div.classList.add(`array-${orientation}`);
+      div.appendChild(span);
 
       // create the template that will be used to populate arrays and add the span.
       const template = document.createElement('template');
