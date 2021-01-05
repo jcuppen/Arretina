@@ -7,16 +7,13 @@ class HideValueOption extends HTMLElement {
 
   connectedCallback() {
     const f = (element, value) => {
-      const form = document.getElementById(this.dataset.id).shadowRoot;
-      const checkbox = form.querySelector(`input[type=checkbox]`);
+      const checkbox = this.shadowRoot.querySelector(`input[type=checkbox]`);
       element.innerHTML = checkbox.checked ? '' : element.innerHTML;
     };
 
     styles.push(f);
 
-    this.id = this.dataset.id;
-
-    const checkbox = generateCheckbox();
+    const checkbox = generateCheckbox(this.dataset.checked);
 
     const container = document.createElement('div');
     container.innerHTML = `${checkbox.outerHTML} All values will be hidden`;

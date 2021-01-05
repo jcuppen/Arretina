@@ -4,44 +4,67 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Arretina (name subject to change)</title>
     <link rel="icon" href="img/favicon/favicon.ico">
     <!-- Stylesheets go here -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="UTF-8">
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
     <h1>Arretina <i>(name subject to change)</i></h1>
 
-    <sac-defaults-picker data-id="picker"></sac-defaults-picker>
-    <fieldset><legend id="default-styles">Defaults:</legend></fieldset>
+    <a id="export-anchor" style="display:none"></a>
+
+    <div class="options-container">
+        <div >
+            <sac-base-styles-picker></sac-base-styles-picker>
+            <fieldset>
+                <legend id="base-styles">Base Styles:</legend>
+            </fieldset>
+        </div>
+        <div>
+            <sac-option-picker></sac-option-picker>
+            <fieldset>
+                <legend id="visualization-options">Visualization Options:</legend>
+            </fieldset>
+
+        </div>
+    </div>
 
     <hr>
 
-    <sac-option-picker data-id="picker"></sac-option-picker>
-    <fieldset id="testt">
-      <legend id="visualization-options">Visualization Options:</legend>
-    </fieldset>
+    <label for="settings-export">Export current settings for easy reuse later:</label>
+    <button id="settings-export" onclick="exportSettings()">Export</button>
 
     <hr>
-    <input id="file-input" type="file" accept="application/json" onchange="readFile(this)">
+
+    <div class="import-container">
+        <label for="settings-input">Import Settings:</label>
+        <input id="settings-input" type="file" accept="application/json" onchange="loadSettings(this)">
+        <label for="array-input">Import Array:</label>
+        <input id="array-input" type="file" accept="application/json" onchange="readFile(this)">
+    </div>
+
+
     <div id="array-root"></div>
 
     <!-- JavaScript goes here -->
     <!-- Required js will be loaded here dynamically -->
     <div id="script-anchor"></div>
 
-    <script src="js/globals.js" type="text/javascript"></script>
-    <script src="js/constants.js" type="text/javascript"></script>
-    <script src="js/code.js" type="text/javascript"></script>
-    <script src="js/defaults.js" type="text/javascript"></script>
-    <script src="js/options.js" type="text/javascript"></script>
+    <script src="js/globals.js"></script>
+    <script src="js/constants.js"></script>
 
-    <script src="js/components/defaultsPicker.js" type="text/javascript"></script>
-    <script src="js/components/optionPicker.js" type="text/javascript"></script>
+    <script src="js/baseStyles.js"></script>
+    <script src="js/options.js"></script>
+    <script src="js/code.js"></script>
+
+    <script src="js/components/baseStylesPicker.js"></script>
+    <script src="js/components/optionPicker.js"></script>
     <!-- Components -->
-    <script src="js/components/elements/array.js" type="text/javascript"></script>
-    <script src="js/components/elements/scalar.js" type="text/javascript"></script>
-  </body>
+    <script src="js/components/elements/array.js"></script>
+    <script src="js/components/elements/scalar.js"></script>
+</body>
 </html>

@@ -8,22 +8,18 @@ class ColorInput extends HTMLElement {
   connectedCallback() {
     const properties = [
       'background-color',
-      'color',
     ]
 
     const f = (element, value) => {
-      const form = document.getElementById(this.dataset.id).shadowRoot;
-      const selectedProperty = form.querySelector('select').value;
-      const colorPicker = form.querySelector(`input[type=color]`);
+      const selectedProperty = this.shadowRoot.querySelector('select').value;
+      const selectedColor = this.shadowRoot.querySelector(`input[type=color]`).value;
       if (selectedProperty == 'background-color') {
-        element.style.color = determineForegroundColor(colorPicker.value);
+        element.style.color = determineForegroundColor(selectedColor);
       }
-      element.style[selectedProperty] = colorPicker.value;
+      element.style[selectedProperty] = selectedColor;
     };
 
     styles.push(f);
-
-    this.id = this.dataset.id;
 
     const propSelect = generateSelect(properties, this.dataset.prop);
     const colorPicker = generateColorPicker(this.dataset.value);

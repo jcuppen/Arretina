@@ -9,8 +9,32 @@ body {
   }
 }
 
-#file-input {
-  width: 100%;
+.options-container {
+  display: flex;
+}
+
+@media only screen and (max-width: 1000px) {
+  .options-container {
+    flex-direction: column;
+  }
+}
+
+h1 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.import-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 5px;
+}
+
+.import-container input {
+  grid-column-start: 2;
+}
+.import-container label {
+  grid-column-start: 1;
 }
 
 #array-root {

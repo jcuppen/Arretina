@@ -63,3 +63,35 @@ function readFile(inputElement) {
   }
 }
 
+function l(input) {
+  defaultStyles = input['defaults'];
+  options = input['options'];
+
+}
+
+function loadSettings(inputElement) {
+  if(inputElement.files[0] ?? false) {
+    let reader = new FileReader();
+    reader.onload = e => {
+      let settings = JSON.parse(e.target.result);
+      // TODO: implement delete functionality;
+      // settings.baseStyles.forEach(addBaseStyle);
+      // settings.options.forEach(addOption);
+    };
+    reader.readAsText(inputElement.files[0]);
+  }
+}
+
+function exportSettings() {
+  let exportObject = {
+    baseStyles: baseStyles,
+    options: options,
+  };
+
+  let encodedObject = encodeURIComponent(JSON.stringify(exportObject));
+  let dataString = `data:text/json;charset=utf-8,${encodedObject}`;
+  var exportAnchor = document.getElementById('export-anchor');
+  exportAnchor.href = dataString;
+  exportAnchor.download = 'visualizations.json';
+  exportAnchor.click();
+}

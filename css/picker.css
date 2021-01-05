@@ -1,0 +1,8 @@
+div {
+	display: flex;
+	margin: 5px 0px;
+}
+
+#add-button {
+	margin-left: 5px;
+}

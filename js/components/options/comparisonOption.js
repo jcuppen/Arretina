@@ -11,20 +11,17 @@ class ComparisonOption extends HTMLElement {
       {name: "greater",       symbol: ">",    fun: (x, v) => v > x},
       {name: "lesser-equal",  symbol: "&le;", fun: (x, v) => v <= x},
       {name: "lesser",        symbol: "<",    fun: (x, v) => v < x},
-      {name: "equal",         symbol: "=",    fun: (x, v) => v === x},
-      {name: "not-equal",     symbol: "&ne;", fun: (x, v) => v !== x},
+      {name: "equal",         symbol: "=",    fun: (x, v) => v == x},
+      {name: "not-equal",     symbol: "&ne;", fun: (x, v) => v != x},
     ];
 
     const f = (functions, element, value) => {
-      const form = document.getElementById(this.dataset.id).shadowRoot;
-      if (form.querySelector('input[type=checkbox]').checked) {
-        const selected = form.querySelector('select').value;
-        const number = form.querySelector('input[type=number]').value;
+      if (this.shadowRoot.querySelector('input[type=checkbox]').checked) {
+        const selected = this.shadowRoot.querySelector('select').value;
+        const number = this.shadowRoot.querySelector('input[type=number]').value;
 
         if(functions[selected].call(this, number, value)) {
-          const backgroundColor = form.querySelector('input[type=color]').value;
-
-          //TODO: color text based on background color.
+          const backgroundColor = this.shadowRoot.querySelector('input[type=color]').value;
 
           element.style.backgroundColor = backgroundColor;
           element.style.color = determineForegroundColor(backgroundColor);
@@ -40,9 +37,7 @@ class ComparisonOption extends HTMLElement {
 
     styles.push(f.bind(this, functions));
 
-    this.setAttribute('id', this.dataset.id);
-
-    const checkbox = generateCheckbox();
+    const checkbox = generateCheckbox(this.dataset.checked);
 
     const select = document.createElement('select');
     comparators.forEach( c => {
@@ -52,19 +47,14 @@ class ComparisonOption extends HTMLElement {
       select.appendChild(option);
     });
 
-    const numberInput = generateNumberInput(this.dataset.value ?? 0);
+    const numberInput = generateNumberInput(this.dataset.value);
     const colorPicker = generateColorPicker(this.dataset.color);
 
     const container = document.createElement('div');
-    container.setAttribute('id', this.dataset.id);
+    // container.setAttribute('id', this.dataset.id);
     container.innerHTML = `
       ${checkbox.outerHTML}
-      All numbers
-      ${select.outerHTML}
-      than
-      ${numberInput.outerHTML}
-      will be colored:
-      ${colorPicker.outerHTML}
+      All numbers ${select.outerHTML} than ${numberInput.outerHTML} will be colored: ${colorPicker.outerHTML}
     `;
 
     // generate the shadown DOM and add the container element.

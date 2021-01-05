@@ -43,17 +43,14 @@ class LengthInput extends HTMLElement {
     ];
 
     const f = (element, value) => {
-      const form = document.getElementById(this.dataset.id).shadowRoot;
-      const inputNumber = form.querySelector(`input[type=number]`).value;
-      const selectedProperty = form.querySelector(`#prop-select`).value;
-      const selectedUnit = form.querySelector(`#unit-select`).value;
+      const inputNumber = this.shadowRoot.querySelector(`input[type=number]`).value;
+      const selectedProperty = this.shadowRoot.querySelector(`#prop-select`).value;
+      const selectedUnit = this.shadowRoot.querySelector(`#unit-select`).value;
 
       element.style[selectedProperty] = `${inputNumber}${selectedUnit}`;
     };
 
     styles.push(f);
-
-    this.id = this.dataset.id;
 
     const propSelect = generateSelect(properties, this.dataset.prop, 'prop-select');
     const numberInput = generateNumberInput(this.dataset.value);
