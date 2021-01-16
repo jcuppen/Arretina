@@ -28,7 +28,12 @@ class BaseStylesPicker extends HTMLElement {
 
     // add event listeners
     shadow.getElementById('add-button').onclick = _ => {
-      addBaseStyle({type: shadow.querySelector('select').value});
+      addBaseStyle(
+        {
+          id: uniqueID(),
+          type: shadow.querySelector('select').value
+        }
+      );
     };
   }
 }

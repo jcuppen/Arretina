@@ -52,12 +52,17 @@ class LengthInput extends HTMLElement {
 
     styles.push(f);
 
+    const deleteButton = document.createElement('delete-button');
+    deleteButton.setAttribute('data-type', CONFIG_TYPES.baseStyle);
+    deleteButton.setAttribute('data-parent-id', this.id);
+
     const propSelect = generateSelect(properties, this.dataset.prop, 'prop-select');
     const numberInput = generateNumberInput(this.dataset.value);
     const unitSelect = generateSelect(units, this.dataset.unit, 'unit-select');
 
     const container = document.createElement('div');
     container.innerHTML = `
+      ${deleteButton.outerHTML}
       Set ${propSelect.outerHTML} to ${numberInput.outerHTML}${unitSelect.outerHTML}
     `;
 

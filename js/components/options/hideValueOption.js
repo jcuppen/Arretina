@@ -13,10 +13,18 @@ class HideValueOption extends HTMLElement {
 
     styles.push(f);
 
+    const deleteButton = document.createElement('delete-button');
+    deleteButton.setAttribute('data-type', CONFIG_TYPES.option);
+    deleteButton.setAttribute('data-parent-id', this.id);
+
     const checkbox = generateCheckbox(this.dataset.checked);
 
     const container = document.createElement('div');
-    container.innerHTML = `${checkbox.outerHTML} All values will be hidden`;
+    container.innerHTML = `
+      ${deleteButton.outerHTML}
+      ${checkbox.outerHTML}
+      All values will be hidden
+    `;
 
     // generate the shadown DOM and add the container element.
     const shadow = this.attachShadow({mode: 'open'});

@@ -29,7 +29,13 @@ class OptionPicker extends HTMLElement {
 
     // add event listeners
     shadow.getElementById('add-button').onclick = _ => {
-      addOption({type: shadow.querySelector('select').value, checked: true});
+      addOption(
+        {
+          id: uniqueID(),
+          type: shadow.querySelector('select').value,
+          checked: true
+        }
+      );
     };
   }
 }

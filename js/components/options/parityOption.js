@@ -26,13 +26,19 @@ class ParityOption extends HTMLElement {
 
     styles.push(f);
 
+    const deleteButton = document.createElement('delete-button');
+    deleteButton.setAttribute('data-type', CONFIG_TYPES.option);
+    deleteButton.setAttribute('data-parent-id', this.id);
+
     const paritySelect = generateSelect(parities, parity);
     const checkbox = generateCheckbox(this.dataset.checked);
     const colorPicker = generateColorPicker(this.dataset.value);
 
     const container = document.createElement('div');
     container.innerHTML = `
-      ${checkbox.outerHTML} All ${paritySelect.outerHTML} numbers will be colored: ${colorPicker.outerHTML}
+      ${deleteButton.outerHTML}
+      ${checkbox.outerHTML}
+      All ${paritySelect.outerHTML} numbers will be colored: ${colorPicker.outerHTML}
     `;
 
     // generate the shadown DOM and add the container element.

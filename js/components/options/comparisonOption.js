@@ -37,6 +37,10 @@ class ComparisonOption extends HTMLElement {
 
     styles.push(f.bind(this, functions));
 
+    const deleteButton = document.createElement('delete-button');
+    deleteButton.setAttribute('data-type', CONFIG_TYPES.option);
+    deleteButton.setAttribute('data-parent-id', this.id);
+
     const checkbox = generateCheckbox(this.dataset.checked);
 
     const select = document.createElement('select');
@@ -53,6 +57,7 @@ class ComparisonOption extends HTMLElement {
     const container = document.createElement('div');
     // container.setAttribute('id', this.dataset.id);
     container.innerHTML = `
+      ${deleteButton.outerHTML}
       ${checkbox.outerHTML}
       All numbers ${select.outerHTML} than ${numberInput.outerHTML} will be colored: ${colorPicker.outerHTML}
     `;

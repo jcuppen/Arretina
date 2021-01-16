@@ -15,3 +15,8 @@ const OPTION_TYPES = {
   comparison: 'comparison',
   hideValue: 'hide-value',
 };
+
+const CONFIG_TYPES = {
+  option: 'option',
+  baseStyle: 'baseStyle'
+};

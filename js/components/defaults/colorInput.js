@@ -21,11 +21,18 @@ class ColorInput extends HTMLElement {
 
     styles.push(f);
 
+    const deleteButton = document.createElement('delete-button');
+    deleteButton.setAttribute('data-type', CONFIG_TYPES.baseStyle);
+    deleteButton.setAttribute('data-parent-id', this.id);
+
     const propSelect = generateSelect(properties, this.dataset.prop);
     const colorPicker = generateColorPicker(this.dataset.value);
 
     const container = document.createElement('div');
-    container.innerHTML = `Set ${propSelect.outerHTML} to ${colorPicker.outerHTML}`;
+    container.innerHTML = `
+      ${deleteButton.outerHTML}
+      Set ${propSelect.outerHTML} to ${colorPicker.outerHTML}
+    `;
 
     // generate the shadown DOM and add the container element.
     const shadow = this.attachShadow({mode: 'open'});
