@@ -44,6 +44,11 @@ h1 {
 .value {
   text-align: center;
   flex-grow: 1;
+
+  background-color: #808080;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 5px;
 }
 
 .array {

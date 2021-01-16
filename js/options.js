@@ -1,9 +1,5 @@
 "use strict";
 
-const defaultOptions = [
-  {type: OPTION_TYPES.hideValue, checked: false}
-];
-
 const options = [];
 
 const optionsAnchor = document.getElementById('visualization-options');
@@ -25,5 +21,3 @@ function addOption(option) {
 
   importScript(`js/components/options/${kebabToCamelCase(option.type)}Option.js`);
 }
-
-defaultOptions.forEach(addOption);
