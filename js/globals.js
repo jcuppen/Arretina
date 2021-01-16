@@ -3,7 +3,6 @@
 const scriptAnchor = document.getElementById('script-anchor');
 const importedScripts = [];
 
-const capitalize = str => str[0].toUpperCase() + str.slice(1);
 const kebabToCamelCase = str => str.replace(/-./g, str => str[1].toUpperCase());
 
 const uniqueID = (function() {

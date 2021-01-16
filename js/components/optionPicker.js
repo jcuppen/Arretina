@@ -8,10 +8,12 @@ class OptionPicker extends HTMLElement {
   connectedCallback() {
     const optionTypes = Object.values(OPTION_TYPES);
 
+    this.id = uniqueID();
+
     const optionTypeSelect = generateSelect(optionTypes, optionTypes[0]);
-    const addButton = document.createElement('button');
-    addButton.id = 'add-button';
-    addButton.innerHTML = `add`;
+    const addButton = document.createElement('add-button');
+    addButton.setAttribute('data-parent-id', this.id);
+    addButton.setAttribute('data-type', CONFIG_TYPES.option);
 
     const style = document.createElement('style');
     style.innerHTML = '@import "css/picker.css";'
@@ -26,17 +28,6 @@ class OptionPicker extends HTMLElement {
     // generate the shadown DOM and add the container element
     const shadow = this.attachShadow({mode: 'open'});
     shadow.appendChild(container);
-
-    // add event listeners
-    shadow.getElementById('add-button').onclick = _ => {
-      addOption(
-        {
-          id: uniqueID(),
-          type: shadow.querySelector('select').value,
-          checked: true
-        }
-      );
-    };
   }
 }
 
